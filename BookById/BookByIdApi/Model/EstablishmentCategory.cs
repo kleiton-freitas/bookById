@@ -10,10 +10,10 @@ namespace BookByIdApi.Model
     {
         //[Column("id")]
         //public int CategoryID { get; set; }
-        [JsonPropertyName("categoria")]
+        [JsonPropertyName("category")]
         [Column("category_name")]
         public string CategoryName { get; set; }
-        [JsonPropertyName("descricao")]
+        [JsonPropertyName("description")]
         [Column("category_description")]
         public string CategoryDescription { get; set; }
 

@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using BookByIdApi.Repository.Generic;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace BookByIdApi
 {
@@ -42,6 +44,24 @@ namespace BookByIdApi
             //versionamento da API
             services.AddApiVersioning();
 
+            //documentacao com swager
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1",
+                        new OpenApiInfo
+                        {
+                            Title = "ApiRest Aplicação BookById (reserve pelo id)",
+                            Version = "v1",
+                            Description = "ApiRest desenvolvida para consumo do aplicativo BookById e demais aplicações",
+                            Contact = new OpenApiContact
+                            {
+                                Name = "Kleiton Freitas",
+                                Url = new Uri("https://github.com/kleiton-freitas")
+
+                            }
+                        }
+                    ); 
+            });
+
 
             //Dependency Injection
             services.AddScoped<IEstablishmentBusinness, EstablishmentBusinnessImplementation>();
@@ -60,7 +80,18 @@ namespace BookByIdApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            //documentation with swagger
+            app.UseSwagger();
 
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rest para aplicativo BookById");
+            });
+
+            var option = new RewriteOptions();
+            option.AddRedirect("ˆ$", "swagger");
+            app.UseRewriter(option);
+            //
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
