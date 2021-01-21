@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BookByIdApi.Businness;
+﻿using BookByIdApi.Businness;
 using BookByIdApi.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -12,6 +9,7 @@ namespace BookByIdApi.Controllers
     [ApiVersion("1")]
     [ApiController]
     [Route("api/[controller]/v{version:apiVersion}")]
+    [Authorize("Bearer")]
     public class CategoryController : Controller
     {
         private readonly ILogger<CategoryController> _logger;

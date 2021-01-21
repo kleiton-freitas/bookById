@@ -2,13 +2,15 @@
 using BookByIdApi.Businness;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookByIdApi.Controllers
 {
     [ApiVersion("1")]
     [ApiController]
     [Route("api/[controller]/v{version:apiVersion}")]
+    [Authorize("Bearer")]
     public class EstablishmentController : Controller
     {
         private readonly ILogger<EstablishmentController> _logger;
@@ -20,6 +22,10 @@ namespace BookByIdApi.Controllers
             EstablishmentService = establishmentService;
         }
         [HttpGet]
+        [ProducesResponseType((200), Type = typeof(List<Establishment>))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((404))]
+        [ProducesResponseType((401))]
         public IActionResult FindAll()
         {
             return Ok(EstablishmentService.FindAll());
