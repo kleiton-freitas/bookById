@@ -16,6 +16,7 @@ namespace BookByIdApi.Model.Context
         public DbSet<Establishment> Establishments { get; set; }
         public DbSet<EstablishmentCategory> Category { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Address> Address { get; set; }
 
     }
 }

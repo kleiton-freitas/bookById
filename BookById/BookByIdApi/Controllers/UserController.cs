@@ -1,29 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BookByIdApi.Businness;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace BookByIdApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [ApiVersion("1")]
+    [Route("api/[controller]/v{version:apiVersion}")]
+
     public class UserController : ControllerBase
     {
         
 
         private readonly ILogger<UserController> _logger;
+        private IUserBusinness UserBusinness;
 
-        public UserController(ILogger<UserController> logger)
+        public UserController(ILogger<UserController> logger, IUserBusinness userBusinness)
         {
             _logger = logger;
+            UserBusinness = userBusinness;
+        }
+        [HttpGet]
+        public IActionResult FindAll()
+        {
+            return Ok(UserBusinness.FindAllUsers());
         }
 
-        [HttpGet()]
-        public IActionResult Get()
+        [HttpGet("detail/{email}")]
+        public IActionResult FindDetailUser(string email)
         {
-            return BadRequest("Input invalid");
+            var detail = UserBusinness.FindDetailUser(email);
+            if (detail == null) return NotFound();
+            
+            return Ok(detail);
         }
+        [HttpGet("{id}")]
+        public IActionResult FindByID(int id)
+        {
+            var result = UserBusinness.FindByID(id);
+            if (result == null) return NoContent();
+            return Ok(result);
+        }
+
     }
 }

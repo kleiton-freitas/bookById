@@ -34,6 +34,14 @@ namespace BookByIdApi.Controllers
             if (category == null) return NotFound();
             return Ok(category);
         }
+        //FIND BY FILTER
+        [HttpGet("filtro/{name}")]
+        public IActionResult FindByFilter(string name)
+        {
+            var category = Category.FindByFilter(name);
+            if (category == null) return NotFound();
+            return Ok(category);
+        }
         //CREATE
         [HttpPost]
         public IActionResult Create([FromBody] EstablishmentCategory category)

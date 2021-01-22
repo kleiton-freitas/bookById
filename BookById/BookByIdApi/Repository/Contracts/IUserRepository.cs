@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BookByIdApi.Model;
 namespace BookByIdApi.Repository.Contracts
 {
@@ -8,6 +9,9 @@ namespace BookByIdApi.Repository.Contracts
         User ValidateCredentials(string email);
         User RefreshUserInfo(User user);
         bool RevokeToken(string email);
+
+        User FindDetailUsers(string email);
+        List<User> FindAllUsers();
 
     }
 }

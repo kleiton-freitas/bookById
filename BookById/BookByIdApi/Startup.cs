@@ -122,7 +122,9 @@ namespace BookByIdApi
             //
             services.AddTransient<IToken, TokenService>();
             services.AddScoped<ILoginBusinness, LoginImplementation>();
+            services.AddScoped<IUserBusinness, UserBusinnessImplementation>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
 
         //This method gets called by the runtime.Use this method to configure the HTTP request pipeline.

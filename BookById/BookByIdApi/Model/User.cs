@@ -1,15 +1,17 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+using BookByIdApi.Model.Base;
 
 namespace BookByIdApi.Model
 {
     [Table("tb_USER")]
-    public class User
+    public class User : BaseEntity
     {
-        [Key]
-        [Column("id")]
-        public int UserID { get; set; }
+        //[Key]
+        //[Column("id")]
+        //public int UserID { get; set; }
         [Column("first_name")]
         public string FirstName { get; set; }
         [Column("last_name")]
@@ -30,10 +32,15 @@ namespace BookByIdApi.Model
         public string RefreshToken { get; set; }
         [Column("refresh_token_expire_time")]
         public DateTime RefresTokenExpiryTime { get; set; }
+        [JsonIgnore]
+        [Column("address_id")]
+        public int AddressID { get; set; }
+        
+        public Address Address { get; set; }
 
-        //address
         public User()
         {
+            Address = new Address();
         }
     }
 }

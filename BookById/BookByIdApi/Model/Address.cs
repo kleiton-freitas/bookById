@@ -1,13 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using BookByIdApi.Model.Base;
 
 namespace BookByIdApi.Model
 {
     [Table("tb_ADDRESS")]
-    public class Address
+    public class Address : BaseEntity
     {
-        [Column("id")]
-        public int AddressID { get; set; }
+        //[Column("id")]
+        //public int AddressID { get; set; }
         [Column("country")]
         public string Coutry { get; set; }
         [Column("postal_code")]

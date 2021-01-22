@@ -11,5 +11,6 @@ namespace BookByIdApi.Businness
         List<EstablishmentCategory> FindAll();
         EstablishmentCategory Update(EstablishmentCategory category);
         void Delete(int id);
+        EstablishmentCategory FindByFilter(string name);
     }
 }

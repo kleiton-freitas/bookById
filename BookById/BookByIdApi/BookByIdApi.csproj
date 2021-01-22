@@ -30,5 +30,10 @@
     <Folder Include="Configurations\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Implementations\" />
+    <Folder Include="Data\" />
+    <Folder Include="Data\ValueObject\" />
+    <Folder Include="Data\Converter\" />
+    <Folder Include="Data\Converter\Contract\" />
+    <Folder Include="Data\Converter\Implementations\" />
   </ItemGroup>
 </Project>

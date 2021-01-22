@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using BookByIdApi.Model;
 using BookByIdApi.Model.Context;
 using BookByIdApi.Repository.Contracts;
+using Microsoft.EntityFrameworkCore;
+
 namespace BookByIdApi.Repository
 {
     public class UserRepository : IUserRepository
@@ -38,9 +41,9 @@ namespace BookByIdApi.Repository
 
         public User RefreshUserInfo(User user)
         {
-            if (!_context.Users.Any(u => u.UserID.Equals(user.UserID))) return null;
+            if (!_context.Users.Any(u => u.ID.Equals(user.ID))) return null;
 
-            var result = _context.Users.SingleOrDefault(p => p.UserID.Equals(user.UserID));
+            var result = _context.Users.SingleOrDefault(p => p.ID.Equals(user.ID));
             if (result != null)
             {
                 try
@@ -62,6 +65,16 @@ namespace BookByIdApi.Repository
             Byte[] inputBytes = Encoding.UTF8.GetBytes(password);
             Byte[] hashedBytes = sHA256CryptoServiceProvider.ComputeHash(inputBytes);
             return BitConverter.ToString(hashedBytes);
+        }
+
+        public User FindDetailUsers(string email)
+        {
+            return _context.Users.Include(a => a.Address).SingleOrDefault(u => u.Email == email);
+        }
+
+        public List<User> FindAllUsers()
+        {
+            return _context.Users.Include(a => a.Address).ToList();
         }
     }
 }
