@@ -18,7 +18,7 @@ namespace BookByIdApi.Repository
 
         public EstablishmentCategory FindByFilter(string name)
         {
-            var filter = _context.Category.Where(f => EF.Functions.Like(
+            var filter = _context.Categorys.Where(f => EF.Functions.Like(
                 f.CategoryName, $"%{name}%"));
 
             return filter.SingleOrDefault();

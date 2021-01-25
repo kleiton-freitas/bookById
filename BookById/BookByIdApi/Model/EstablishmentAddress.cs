@@ -4,15 +4,13 @@ using BookByIdApi.Model.Base;
 
 namespace BookByIdApi.Model
 {
-    [Table("tb_ADDRESS")]
-    public class Address : BaseEntity
+    [Table("tb_ESTABLISHMENT_ADDRESS")]
+    public class EstablishmentAddress : BaseEntity
     {
-        //[Column("id")]
-        //public int AddressID { get; set; }
-        [Column("country")]
-        public string Country { get; set; }
         [Column("postal_code")]
         public string PostalCode { get; set; }
+        [Column("country")]
+        public string Country { get; set; }
         [Column("uf")]
         public string UF { get; set; }
         [Column("city")]
@@ -22,14 +20,10 @@ namespace BookByIdApi.Model
         [Column("street")]
         public string Street { get; set; }
         [Column("number")]
-        public int Number { get; set; }
+        public string Number { get; set; }
         [Column("complement")]
         public string Complement { get; set; }
-        [Column("user_id")]
-        public int UserID { get; set; }
-
-        public Address()
-        {
-        }
+        [Column("establishment_id")]
+        public int EstablishmentID { get; set; }
     }
 }

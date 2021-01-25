@@ -14,9 +14,14 @@ namespace BookByIdApi.Model.Context
 
         }
         public DbSet<Establishment> Establishments { get; set; }
-        public DbSet<EstablishmentCategory> Category { get; set; }
+        public DbSet<EstablishmentCategory> Categorys { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Address> Address { get; set; }
+        public DbSet<EstablishmentBusinness> EstablishmentBusinness { get; set; }
+        public DbSet<EstablishmentServices> Services { get; set; }
+        public DbSet<Schedules> Schedules { get; set; }
+        public DbSet<EstablishmentAddress> EstablishmentAddresses { get; set; }
+        public DbSet<UserSchedule> UserSchedules { get; set; }
 
     }
 }

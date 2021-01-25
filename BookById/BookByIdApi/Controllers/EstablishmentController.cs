@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
+using BookByIdApi.Data.ValueObject;
 
 namespace BookByIdApi.Controllers
 {
@@ -14,45 +15,46 @@ namespace BookByIdApi.Controllers
     public class EstablishmentController : Controller
     {
         private readonly ILogger<EstablishmentController> _logger;
-        private IEstablishmentBusinness EstablishmentService;
+        private IEstablishment EstablishmenBusinness;
 
-        public EstablishmentController(ILogger<EstablishmentController> logger, IEstablishmentBusinness establishmentService)
+        public EstablishmentController(ILogger<EstablishmentController> logger, IEstablishment establishmentBusinness)
         {
             _logger = logger;
-            EstablishmentService = establishmentService;
+            EstablishmenBusinness = establishmentBusinness;
         }
         [HttpGet]
-        [ProducesResponseType((200), Type = typeof(List<Establishment>))]
-        [ProducesResponseType((400))]
-        [ProducesResponseType((404))]
-        [ProducesResponseType((401))]
+        //[ProducesResponseType((200), Type = typeof(List<EstablishmentVO>))]
+        //[ProducesResponseType((400))]
+        //[ProducesResponseType((404))]
+        //[ProducesResponseType((401))]
         public IActionResult FindAll()
         {
-            return Ok(EstablishmentService.FindAll());
+            return Ok(EstablishmenBusinness.FindAll());
         }
+
         [HttpGet("{id}")]
         public IActionResult FindById(int id)
         {
-            var establishment = EstablishmentService.FindById(id);
+            var establishment = EstablishmenBusinness.FindById(id);
             if (establishment == null) return NotFound();
             return Ok(establishment);
         }
         [HttpPost]
-        public IActionResult Create([FromBody] Establishment establishment)
+        public IActionResult Create([FromBody] EstablishmentVO establishment)
         {
             if (establishment == null) { return BadRequest("Requisicao invalida"); }
-            return Ok(EstablishmentService.Create(establishment));
+            return Ok(EstablishmenBusinness.Create(establishment));
         }
         [HttpPut]
-        public IActionResult Update([FromBody] Establishment establishment)
+        public IActionResult Update([FromBody] EstablishmentVO establishment)
         {
             if (establishment == null) { return BadRequest("Requisicao invalida"); }
-            return Ok(EstablishmentService.Update(establishment));
+            return Ok(EstablishmenBusinness.Update(establishment));
         }
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            EstablishmentService.Delete(id);
+            EstablishmenBusinness.Delete(id);
             return NoContent();
         }
     }

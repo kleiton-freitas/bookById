@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using BookByIdApi.Data.ValueObject;
 using BookByIdApi.Model;
 
 namespace BookByIdApi.Businness
 {
     public interface ICategory
     {
-        EstablishmentCategory Create(EstablishmentCategory category);
-        EstablishmentCategory FindById(int id);
-        List<EstablishmentCategory> FindAll();
-        EstablishmentCategory Update(EstablishmentCategory category);
+        CategoryVO Create(CategoryVO category);
+        CategoryVO FindById(int id);
+        List<CategoryVO> FindAll();
+        CategoryVO Update(CategoryVO category);
         void Delete(int id);
-        EstablishmentCategory FindByFilter(string name);
+        CategoryVO FindByFilter(string name);
     }
 }

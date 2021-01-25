@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using BookByIdApi.Data.Converter.Contract;
 using BookByIdApi.Data.ValueObject;
@@ -23,8 +22,9 @@ namespace BookByIdApi.Data.Converter.Implementations
                 CellPhone = origin.CellPhone,
                 SocialNetwork = origin.SocialNetwork,
                 Picture = origin.Picture,
-                RefreshToken = origin.RefreshToken,
-                RefresTokenExpiryTime = origin.RefresTokenExpiryTime
+                //RefreshToken = origin.RefreshToken,
+                //RefresTokenExpiryTime = origin.RefresTokenExpiryTime,
+                //Address = origin.Address
                 
             };
         }
@@ -42,9 +42,10 @@ namespace BookByIdApi.Data.Converter.Implementations
                 CellPhone = origin.CellPhone,
                 SocialNetwork = origin.SocialNetwork,
                 Picture = origin.Picture,
-                RefreshToken = origin.RefreshToken,
-                RefresTokenExpiryTime = origin.RefresTokenExpiryTime
-
+                //RefreshToken = origin.RefreshToken,
+                //RefresTokenExpiryTime = origin.RefresTokenExpiryTime,
+                //Address = origin.Address
+                
             };
         }
         public List<User> Parse(List<UserVo> origin)

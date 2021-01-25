@@ -3,7 +3,7 @@ namespace BookByIdApi.Model
 {
     public class BusinnessServiceAssociation
     {
-        private Service Service;
+        private EstablishmentServices Service;
         private EstablishmentBusinness Businness;
         public BusinnessServiceAssociation()
         {

@@ -1,4 +1,5 @@
 ﻿using BookByIdApi.Businness;
+using BookByIdApi.Data.ValueObject;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -10,15 +11,28 @@ namespace BookByIdApi.Controllers
 
     public class UserController : ControllerBase
     {
-        
+
 
         private readonly ILogger<UserController> _logger;
         private IUserBusinness UserBusinness;
+
 
         public UserController(ILogger<UserController> logger, IUserBusinness userBusinness)
         {
             _logger = logger;
             UserBusinness = userBusinness;
+        }
+        [HttpPost]
+        public IActionResult Create([FromBody] UserVo user)
+        {
+            if (user == null) return BadRequest("Requisicao Invalida");
+            return Ok(UserBusinness.Create(user));
+        }
+        [HttpPut]
+        public IActionResult UpdateUser([FromBody] UserVo user)
+        {
+            if (user == null) return BadRequest("Requisicao Invalida");
+            return Ok(UserBusinness.Update(user));
         }
         [HttpGet]
         public IActionResult FindAll()
@@ -31,7 +45,7 @@ namespace BookByIdApi.Controllers
         {
             var detail = UserBusinness.FindDetailUser(email);
             if (detail == null) return NotFound();
-            
+
             return Ok(detail);
         }
         [HttpGet("{id}")]
@@ -41,6 +55,14 @@ namespace BookByIdApi.Controllers
             if (result == null) return NoContent();
             return Ok(result);
         }
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            UserBusinness.Delete(id);
+            string result = "Usuário excluido com sucesso!";
+            return Ok(result);
+        }
+        
 
     }
 }

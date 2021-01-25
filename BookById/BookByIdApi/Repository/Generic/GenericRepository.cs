@@ -43,14 +43,14 @@ namespace BookByIdApi.Repository.Generic
 
         public T Update(T item)
         {
-            var result = dataSet.SingleOrDefault(p => p.ID.Equals(item.ID));
+            var result = dataSet.SingleOrDefault(u => u.ID == item.ID);
+
             if (result != null)
             {
                 try
                 {
-                    _context.Entry(result).CurrentValues.SetValues(result);
+                    _context.Entry(result).CurrentValues.SetValues(item);
                     _context.SaveChanges();
-                    
                 }
                 catch (Exception ex)
                 {

@@ -13,5 +13,7 @@ namespace BookByIdApi.Repository.Contracts
         User FindDetailUsers(string email);
         List<User> FindAllUsers();
 
+        User UpdateUser(User user);
+
     }
 }

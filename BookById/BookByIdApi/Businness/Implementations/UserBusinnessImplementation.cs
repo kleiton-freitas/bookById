@@ -21,13 +21,20 @@ namespace BookByIdApi.Businness.Implementations
             _repository = repository;
             _userConverter = new UserConverter();
         }
-        //public UserVo Create(UserVo user)
-        //{
-        //    var userEntity = _userConverter.Parse(user);
-        //    userEntity = _repository.Create(userEntity);
-        //    return _userConverter.Parse(userEntity);
-        //}
+        public UserVo Create(UserVo user)
+        {
+            var userEntity = _userConverter.Parse(user);
+            userEntity = _repository.Create(userEntity);
+            return _userConverter.Parse(userEntity);
+        }
+        
+        public UserVo UpdateUser(UserVo user)
+        {
+            var userEntity = _userConverter.Parse(user);
+            userEntity = _userRepository.UpdateUser(userEntity);
+            return _userConverter.Parse(userEntity);
 
+        }
         public List<UserVo> FindAllUsers()
         {
             return _userConverter.Parse(_userRepository.FindAllUsers());
@@ -40,6 +47,17 @@ namespace BookByIdApi.Businness.Implementations
         public UserVo FindByID(int id)
         {
             return _userConverter.Parse(_repository.FindById(id));
+        }
+
+        public void Delete(int id)
+        {
+            _repository.Delete(id);
+        }
+        public UserVo Update(UserVo user)
+        {
+            var userEntity = _userConverter.Parse(user);
+            userEntity = _repository.Update(userEntity);
+            return _userConverter.Parse(userEntity);
         }
     }
 }

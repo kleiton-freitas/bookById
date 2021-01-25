@@ -32,15 +32,12 @@ namespace BookByIdApi.Model
         public string RefreshToken { get; set; }
         [Column("refresh_token_expire_time")]
         public DateTime RefresTokenExpiryTime { get; set; }
-        [JsonIgnore]
-        [Column("address_id")]
-        public int AddressID { get; set; }
-        
-        public Address Address { get; set; }
+
+        //public  Address Address { get; set; }
 
         public User()
         {
-            Address = new Address();
+           // Address = new Address();
         }
     }
 }

@@ -1,14 +1,26 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using BookByIdApi.Model.Base;
+
 namespace BookByIdApi.Model
 {
-    public class Schedules
+    [Table("tb_SCHEDULES")]
+    public class Schedules : BaseEntity
     {
-        public int ScheduleID { get; set; }
-        //servicetype
-        public DateTime AvailableTime { get; set; }
+        [Column("available_time")]
+        public string AvailableTime { get; set; }
+
+        [Column("date")]
         public DateTime AvailableDate { get; set; }
-        //establishment_businness
-        public ScheduleStatus scheduleStatus { get; set; }
+
+        [Column("schedule_status")]
+        public int scheduleStatus { get; set; }
+
+        [Column("attendances_number")]
+        public int AttendancesNumber { get; set; }
+
+        [Column("establishment_id")]
+        public int EstablishmentID { get; set; }
 
         public Schedules()
         {

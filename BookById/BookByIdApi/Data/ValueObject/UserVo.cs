@@ -14,11 +14,11 @@ namespace BookByIdApi.Data.ValueObject
         public string CellPhone { get; set; }
         public string SocialNetwork { get; set; }
         public string Picture { get; set; }
-        public string RefreshToken { get; set; }
-        public DateTime RefresTokenExpiryTime { get; set; }
-        public Address Address { get; set; }
+        //public string RefreshToken { get; set; }
+        //public DateTime RefresTokenExpiryTime { get; set; }
+        //public Address Address { get; set; }
 
-        public UserVo() { Address = new Address(); }
+        //public UserVo() { Address = new Address(); }
 
     }
 }

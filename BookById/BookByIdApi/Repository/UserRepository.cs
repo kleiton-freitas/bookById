@@ -69,12 +69,35 @@ namespace BookByIdApi.Repository
 
         public User FindDetailUsers(string email)
         {
-            return _context.Users.Include(a => a.Address).SingleOrDefault(u => u.Email == email);
+            return _context.Users.SingleOrDefault(u => u.Email == email);
         }
 
         public List<User> FindAllUsers()
         {
-            return _context.Users.Include(a => a.Address).ToList();
+            return _context.Users.ToList();
+        }
+
+        public User UpdateUser(User user)
+        {
+            var result = _context.Users.SingleOrDefault(u => u.ID == user.ID);
+
+            if (result != null)
+            {
+                try
+                {
+                    _context.Entry(result).CurrentValues.SetValues(user);
+                    _context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                return result;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

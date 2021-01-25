@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
-using BookByIdApi.Model;
+﻿using System;
+using System.Collections.Generic;
+using BookByIdApi.Data.ValueObject;
 
 namespace BookByIdApi.Businness
 {
     public interface IEstablishmentBusinness
     {
-        Establishment Create(Establishment establishment);
-        Establishment FindById(int id);
-        List<Establishment> FindAll();
-        Establishment Update(Establishment establishment);
+        EstablishmentBusinnessVO Create(EstablishmentBusinnessVO establishmentBusinness);
+        EstablishmentBusinnessVO Update(EstablishmentBusinnessVO establishmentBusinness);
+        List<EstablishmentBusinnessVO> FindAll();
         void Delete(int id);
     }
 }

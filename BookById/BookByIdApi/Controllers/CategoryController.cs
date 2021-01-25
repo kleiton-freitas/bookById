@@ -1,4 +1,5 @@
 ﻿using BookByIdApi.Businness;
+using BookByIdApi.Data.ValueObject;
 using BookByIdApi.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ namespace BookByIdApi.Controllers
     [ApiVersion("1")]
     [ApiController]
     [Route("api/[controller]/v{version:apiVersion}")]
-    [Authorize("Bearer")]
+    //[Authorize("Bearer")]
     public class CategoryController : Controller
     {
         private readonly ILogger<CategoryController> _logger;
@@ -44,18 +45,16 @@ namespace BookByIdApi.Controllers
         }
         //CREATE
         [HttpPost]
-        public IActionResult Create([FromBody] EstablishmentCategory category)
+        public IActionResult Create([FromBody] CategoryVO category)
         {
-            if (category == null)
-            {
-                return BadRequest("Requisição Invalida");
-            }
+            if (category == null) return BadRequest("Requisição Invalida");
+
             return Ok(Category.Create(category));
         }
 
         //UPDATE
         [HttpPut]
-        public IActionResult Update([FromBody] EstablishmentCategory category)
+        public IActionResult Update([FromBody] CategoryVO category)
         {
             if (category == null) return BadRequest("Requisição Invalida");
             return Ok(Category.Update(category));

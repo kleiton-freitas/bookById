@@ -116,9 +116,15 @@ namespace BookByIdApi
 
 
             //Dependency Injection
-            services.AddScoped<IEstablishmentBusinness, EstablishmentBusinnessImplementation>();
+            services.AddScoped<IEstablishment, EstablishmentImplementation>();
             services.AddScoped<ICategory, CategoryImplementation>();
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IAddressBusinness, AddressImplementation>();
+            services.AddScoped<IEstablishmentBusinness, EstablishmentBusinnessImplementation>();
+            services.AddScoped<IEstablishmentServices, EstablishmentServicesImplementation>();
+            services.AddScoped<ISchedules, SchedulesImplementation>();
+            services.AddScoped<IEstablishmentAddress, EstablishmentAddressImplementation>();
+            services.AddScoped<IUserSchedule, UserScheduleImplementation>();
             //
             services.AddTransient<IToken, TokenService>();
             services.AddScoped<ILoginBusinness, LoginImplementation>();
