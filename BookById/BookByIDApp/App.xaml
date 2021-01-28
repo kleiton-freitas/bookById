@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookByIDApp.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="greenApp">#7ED3C3</Color>
+            <Color x:Key="blueApp">#3FBDEB</Color>
+            <Color x:Key="redApp">#EB4C3F</Color>
+            <Color x:Key="grayApp">#707070</Color>
+            <Color x:Key="lightGrayApp">#EFEFEF</Color>
+            <Color x:Key="lightGrayTextApp">#AFAFAF</Color>
+            <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+                <Setter Property="NavigationPage.HasNavigationBar" Value="False" />
+                <Setter Property="Padding" Value="15"/>
+                <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+            </Style>
+
+            <Style TargetType="Frame" Class="EntryFrame">
+                <Setter Property="Padding" Value="10, 0"/>
+                <Setter Property="HeightRequest" Value="70"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="BorderColor" Value="{StaticResource lightGrayApp}"/>
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="{StaticResource lightGrayTextApp}" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+            
+            <Style x:Key="simpleButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style x:Key="actionButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource greenApp}" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="0"/>
+            </Style>
+
+            <!--STYLE PAG SCHEDULES-->
+            <Style x:Key="Title" TargetType="Label" >
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontFamily" Value="font-bold-app"/>
+                <!--><Setter  Property="FontFamily" Value="Small" />-->
+                <Setter Property="TextColor" Value="{StaticResource grayApp}"/>
+            </Style>
+
+            <!--CALENDAR FRAME-->
+            <Style TargetType="Frame" Class="Calendar">
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="HeightRequest" Value="56"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource grayApp}"/>
+            </Style>
+
+            <Style TargetType="Label" Class="Calendar_Month">
+                <Setter Property="FontFamily" Value="font-bold-app" />
+                <Setter Property="FontSize" Value="21" />
+                <Setter Property="TextColor" Value="White"/> 
+            </Style>
+
+            <Style TargetType="Label" Class="Calendar_Desc">
+                <Setter Property="FontFamily" Value="font-bold-app" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="White"/> 
+            </Style>
+            <!--#region SCHEDULES-->
+            <!--SCHEDULES LIST-->
+            <Style TargetType="Label" Class="UserSchedule">
+                <Setter Property="FontFamily" Value="font-bold-app" />
+                <Setter Property="FontSize" Value="21" />
+                <Setter Property="TextColor" Value="{StaticResource grayApp}"/> 
+            </Style>
+
+            <Style TargetType="Label" Class="DateSchedule">
+                <Setter Property="FontFamily" Value="font-regular-app" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="{StaticResource grayApp}"/> 
+            </Style>
+
+            <Style TargetType="Label" Class="HourSchedule">
+                <Setter Property="FontFamily" Value="font-extrabold-app" />
+                <Setter Property="FontSize" Value="10"/>
+                <Setter Property="TextColor" Value="{StaticResource grayApp}"/> 
+            </Style>
+
+            <Style TargetType="Label" Class="Tag">
+                <Setter Property="FontFamily" Value="font-bold-app" />
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource redApp}"/>
+                <Setter Property="Padding" Value="5,10,0,10"/>
+                <Setter Property="TextColor" Value="White"/> 
+            </Style>
+
+            <!--SCHEDULE DETAIL-->
+            <Style TargetType="Frame" Class="Schedule_Detail">
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="HeightRequest" Value="198"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource blueApp}"/>
+            </Style>
+
+            <Style TargetType="Label" Class="Schedule_Detail_Tag">
+                <Setter Property="FontFamily" Value="font-bold-app" />
+                <Setter Property="FontSize" Value="36"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Label" Class="Schedule_Detail_Date">
+                <Setter Property="FontFamily" Value="font-regular-app" />
+                <Setter Property="FontSize" Value="19"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Label" Class="Schedule_Detail_Hour">
+                <Setter Property="FontFamily" Value="font-extrabold-app" />
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Label" Class="Schedule_Detail_UserName">
+                <Setter Property="FontFamily" Value="font-bold-app" />
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="TextColor" Value="{StaticResource grayApp}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Label" Class="Schedule_Detail_Phone">
+                <Setter Property="FontFamily" Value="font-regular-app" />
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="{StaticResource grayApp}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Label" Class="Schedule_Detail_Email">
+                <Setter Property="FontFamily" Value="font-regular-app" />
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="{StaticResource grayApp}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Label" Class="Schedule_Detail_MessageTitle">
+                <Setter Property="FontFamily" Value="font-extrabold-app" />
+                <Setter Property="FontSize" Value="10"/>
+                <Setter Property="TextColor" Value="{StaticResource grayApp}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+            </Style>
+
+            <Style TargetType="Label" Class="Schedule_Detail_MessageText">
+                <Setter Property="FontFamily" Value="font-regular-app" />
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="{StaticResource grayApp}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+            </Style>
+
+            <Style x:Key="ScheduleButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource blueApp}" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="0"/>
+            </Style>
+
+            <Style x:Key="ScheduleButtonCancel" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource redApp}" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="0"/>
+                <Setter Property="WidthRequest" Value="24"/>
+                <Setter Property="HeightRequest" Value="10"/>
+            </Style>
+
+            <Style TargetType="Label" Class="Schedule_Detail_MessageCancel">
+                <Setter Property="FontFamily" Value="font-regular-app" />
+                <Setter Property="FontSize" Value="10"/>
+                <Setter Property="TextColor" Value="{StaticResource grayApp}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+            </Style>
+
+            <Style TargetType="Frame" Class="Schedule_Detail_FrameCancel">
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="Padding" Value="10, 10, 10, 10"/>
+            </Style>
+            <!--#endregion-->
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

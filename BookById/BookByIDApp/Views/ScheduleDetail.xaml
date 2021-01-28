@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BookByIDApp.Views.ScheduleDetail">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame StyleClass="Schedule_Detail">
+                <StackLayout>
+                    <Label StyleClass="Schedule_Detail_Tag" Text="Aguardando"/>
+                    <Label StyleClass="Schedule_Detail_Date" Text="Data: 10/01/2021 - HOJE"/>
+                    <Label StyleClass="Schedule_Detail_Hour" Text="Horário: 10:00 as 11:00"/>
+                </StackLayout>
+            </Frame>
+            <Image Source="Drawable/foto.png"/>
+            <Label StyleClass="Schedule_Detail_UserName" Text="Kleiton Eduardo Freitas"/>
+            <Label StyleClass="Schedule_Detail_Phone" Text="Fone: 11 95347-6593"/>
+            <Label StyleClass="Schedule_Detail_Email" Text="Email: kleiduda@gmail.com"/>
+            <Line BackgroundColor="{StaticResource grayApp}" HeightRequest="0.5"/>
+            <Label StyleClass="Schedule_Detail_MessageTitle" Text="mensagem de kleiton"/>
+            <Label StyleClass="Schedule_Detail_MessageText" Text="Gostaria de marcar contigo nesse horário, aguardo confirmação do horário."/>
+            <Button Style="{StaticResource ScheduleButton}" Text="CONFIRMAR AGENDAMENTO"/>
+            <Grid ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Frame StyleClass="Schedule_Detail_FrameCancel">
+                    <Button Style="{StaticResource ScheduleButtonCancel}" Text="cancelar" Grid.Column="0"/>
+                </Frame>
+                
+                <Frame  Grid.Column="1">
+                    <Label StyleClass="Schedule_Detail_MessageCancel" Text="Seja cordial, e explique o porque não pode atender esse agendamento :)"/>
+                </Frame>
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BookByIDApp.Views.Schedules">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="Drawable/logo_header.png" Aspect="AspectFill" HorizontalOptions="Start" />
+            <Line BackgroundColor="{StaticResource grayApp }"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Style="{StaticResource Title}" Text="Agendamentos" Grid.Row="0" Padding="5,15,0,0"/>
+                <Frame StyleClass="Calendar" Grid.Row="0" Grid.Column="1">
+                    <StackLayout>
+                        <Label StyleClass="Calendar_Month" Text="10" Margin="0,-10,0,0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        <Label StyleClass="Calendar_Desc" Text="Jan/21" Margin="0,-10,0,0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+                
+            </Grid>
+            
+            <Frame Margin="0,20,0,0">
+                <StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    </StackLayout.GestureRecognizers>
+                    <Label StyleClass="UserSchedule" Text="Kleiton Freitas"/>
+                    <Label Text="Data: 28/01/2021" StyleClass="DateSchedule"/>
+                    <Label StyleClass="HourSchedule" Text="Horário: 10:00 as 11:00" />
+                    <Label StyleClass="Tag" Text="AGUARDANDO"/>
+                    <Image />
+                </StackLayout>
+            </Frame>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

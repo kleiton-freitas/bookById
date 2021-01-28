@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="BookByIDApp.Views.Login"
+    >
+    <ContentPage.Content>
+        <StackLayout>
+            <BoxView HeightRequest="100"/>
+
+            <Image Source="Drawable/logo_dark.png" Aspect="AspectFill"></Image>
+            <Grid  VerticalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="4" />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Button Text="Entrar" Grid.Row="0" Style="{StaticResource simpleButton}"/>
+                <Button Text="Cadastre-se" Grid.Row="0" Grid.Column="1" Style="{StaticResource simpleButton}"></Button>
+                <BoxView BackgroundColor="{StaticResource greenApp}" Grid.Row="1"/>
+                <BoxView BackgroundColor="{StaticResource greenApp}" Grid.Row="1" Grid.Column="1"/>
+
+                <Frame StyleClass="EntryFrame" Grid.Row="2" Grid.ColumnSpan="2">
+                    <Entry Placeholder="Login" ></Entry>
+                </Frame>
+                <Frame StyleClass="EntryFrame" Grid.Row="3" Grid.ColumnSpan="2" >
+                    <Entry Placeholder="Senha"></Entry>
+                </Frame>
+                <Button Text="ENTRAR" Style="{StaticResource actionButton}" Grid.Row="4" Grid.ColumnSpan="2"  Clicked="BtnLogin_Clicked"></Button>
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
